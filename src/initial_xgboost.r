@@ -10,10 +10,6 @@ cat("Splitting data...\n");
 train<-subset(completeData, !is.na(completeData$shot_made_flag));
 test<-subset(completeData, is.na(completeData$shot_made_flag));
 
-test.id <- test$shot_id;
-train$shot_id <- NULL;
-test$shot_id <- NULL;
-
 cat("Creating new features...\n");
 train$time_remaining <- train$minutes_remaining*60+train$seconds_remaining;
 test$time_remaining <- test$minutes_remaining*60+test$seconds_remaining;
@@ -39,6 +35,9 @@ train$lon <- NULL;
 test$lon <- NULL;
 write.csv(train, "../data/train_feature.csv", row.names = F);
 write.csv(test, "../data/test_feature.csv", row.names = F);
+test.id <- test$shot_id;
+train$shot_id <- NULL;
+test$shot_id <- NULL;
 train.y = train$shot_made_flag;
 
 train$shot_made_flag <- NULL;
