@@ -37,7 +37,8 @@ train$lat <- NULL;
 test$lat <- NULL;
 train$lon <- NULL;
 test$lon <- NULL;
-
+write.csv(train, "../data/train_feature.csv", row.names = F);
+write.csv(test, "../data/test_feature.csv", row.names = F);
 train.y = train$shot_made_flag;
 
 train$shot_made_flag <- NULL;
